@@ -68,7 +68,7 @@ src/
   Optional<User> findById(Long id);
   List<User> findAll();
   void delete(Long id);
-````
+    ````
 
 * **Optional** : utilisé pour indiquer qu’un utilisateur peut être trouvé ou non, évitant les `null`.
 
