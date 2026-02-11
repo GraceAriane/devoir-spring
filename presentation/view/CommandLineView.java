@@ -4,14 +4,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import devoir.domain.model.User;
-import devoir.presentation.controller.UserController;
 import devoir.presentation.model.UserChoice;
 
 public class CommandLineView implements UserViewable{
 
     Scanner keyboard = new Scanner(System.in);
     String choice;
-
 
     /** 
      * @return UserChoice qui va retenir le choix fait l'utilisateur
@@ -48,7 +46,7 @@ public class CommandLineView implements UserViewable{
     }
 
     /** 
-     * @param users
+     * @param users récupère les utilisateurs pour ensuite les afficher
      */
     public void showAllUsers(List<User> users){
 
@@ -57,7 +55,7 @@ public class CommandLineView implements UserViewable{
             System.out.println("Aucun utilisateur trouvé.");
         }else{
             for(User u: users){
-                u.toString();
+                System.out.println(u.toString());
             }
         }
 
@@ -65,12 +63,13 @@ public class CommandLineView implements UserViewable{
     }
 
     /** 
-     * @return Long
+     * @return id de type long 
      */
     public Long promptDeleteUser(){
 
         System.out.println("Entrez l'ID de l'utilisateur à supprimer: ");
         Long id = keyboard.nextLong();
+        keyboard.nextLine();
         return id;
     }
 

@@ -20,6 +20,7 @@ import devoir.domain.repository.UserRepository;
 public class UserServiceImpl implements Service {
 
     private final UserRepository userRepository;
+    private Long nextId = (long) 1;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -29,9 +30,14 @@ public class UserServiceImpl implements Service {
      * @param user
      */
     public void addUser(User user) {
-
+        user.setId(nextId++);
         userRepository.save(user);
     }
+
+    // public void addUser(String name, String email) {
+    //     User user = new User(nextId++, name, email);
+    //     userRepository.save(user);
+    // }
 
     /** 
      * @param id
@@ -41,6 +47,7 @@ public class UserServiceImpl implements Service {
         
         return userRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException(""));
+        // ceci siginifie que on trouve l'id par son identifiant sinon on revoie l'erreur grace la méthode utilisée
 
     }
 

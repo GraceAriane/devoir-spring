@@ -37,6 +37,10 @@ public class UserController {
                 case DELETE_USER:
                     deleteUser();
                     break;
+                
+                case EXIT:
+                    exit();
+                    break;
             
                 default:
                     break;

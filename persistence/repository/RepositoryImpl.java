@@ -23,25 +23,26 @@ public class RepositoryImpl implements UserRepository {
     private Map<Long, User> users = new HashMap<>();
 
     /** 
-     * @param user
+     * @param user qui représente un utilisateur
      */
     public void save(User user){
         users.put(user.getId(), user);
     }
 
     /** 
-     * @param id
-     * @return Optional<User>
+     * @param id qui represente l'identifiant d'un utilisateur
+     * @return Optional<User> qui veut dire ici que ça peut retourner un 
+     * utilisateur ou bien null si ça ne trouve pas
      */
     public Optional<User> findById(Long id){
         return Optional.ofNullable(users.get(id));
-        // Optional.ofNullable transforme null en Optional.empty()
-        // get(key) retourne la valeur associé ou null si pas trouvée
+        // Optional.ofNullable transforme null en Optional.empty() nous qui oblige à gérer le cas "pas de valeur"
+        // get(key) retourne la valeur associé ou vide si pas trouvée
 
     }
 
     /** 
-     * @return List<User>
+     * @return List<User> l'ensemble de tous les utilisateurs sous formes de liste
      */
     public List<User> findAll(){
         ArrayList<User> allUsers = new ArrayList<User>();
@@ -53,7 +54,7 @@ public class RepositoryImpl implements UserRepository {
     }
 
     /** 
-     * @param id
+     * @param id qui est l'id à supprimer 
      */
     public void delete(Long id){
 
