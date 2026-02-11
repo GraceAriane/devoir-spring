@@ -48,14 +48,14 @@ public class User {
     /** 
      * @return String
      */
-    public String getId(){
+    public Long getId(){
         return this.id;
     }
 
     /** 
      * @param id
      */
-    public void setId(String id){
+    public void setId(Long id){
         this.id = id;
     }
 
@@ -69,7 +69,7 @@ public class User {
 
 
 
-    private String id;
+    private Long id;
     private String name;
     private String email;
     
