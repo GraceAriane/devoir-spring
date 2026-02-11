@@ -14,51 +14,56 @@ public class UserController {
     Service service;
     UserViewable view;
 
-
-    UserChoice userChoice ;
+    UserChoice userChoice;
 
     public UserController(Service service, UserViewable view){
         this.service = service;
         this.view = view;
-        view.setController(this);
-        userChoice = UserChoice.MENU;
     }
 
     public void run(){
-        while(userChoice == UserChoice.MENU){
-            view.showMenuAndGetChoice();
+        while(true){
+            userChoice = view.showMenuAndGetChoice();
+
+            switch (userChoice) {
+                case CREATE_USER:
+                    addUser();
+                    break;
+            
+                case LIST_USERS:
+                    listUsers();
+                    break;
+            
+                case DELETE_USER:
+                    deleteUser();
+                    break;
+            
+                default:
+                    break;
+            }
         }
 
-        switch (userChoice) {
-            case CREATE_USER:
-                view.promptForAddUsers();
-                break;
-        
-            case LIST_USERS:
-                view.something();
-                break;
-        
-            case DELETE_USER:
-                view.something();
-                break;
-        
-            default:
-                break;
-        }
-    }
-
-    public void addUser(String name, String email){
-        
-        service.addUser(new User(name, email));
-        view.something();
 
     }
 
-    public List<User> getUsers(){
-        return service.getAllUsers();
+    public void addUser(){
+        
+        User user = view.promptForAddUsers();
+        service.addUser(user);
+        
     }
 
-    public void deleteUser(Long id){
-        service.deleteUser(id);
+    public void listUsers(){
+        view.showAllUsers(service.getAllUsers());
     }
+
+    public void deleteUser(){
+        service.deleteUser(view.promptDeleteUser());
+    }
+
+    public void exit(){
+        System.out.println("operations terminees.");
+        System.exit(0);
+    }
+
 }

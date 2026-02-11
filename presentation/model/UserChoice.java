@@ -4,5 +4,5 @@ public enum UserChoice{
     CREATE_USER, 
     DELETE_USER, 
     LIST_USERS, 
-    MENU
+    EXIT
 }

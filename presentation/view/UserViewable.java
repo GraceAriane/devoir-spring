@@ -1,16 +1,18 @@
 package devoir.presentation.view;
 
 
+import java.util.List;
+
+import devoir.domain.model.User;
 import devoir.presentation.controller.UserController;
+import devoir.presentation.model.UserChoice;
 
 public interface UserViewable {
     
-    public void showMenuAndGetChoice();
-    public void promptForAddUsers();
-    public void promptDeleteUser();
-    public void showAllUsers();
+    public UserChoice showMenuAndGetChoice();
+    public void showAllUsers(List<User> users);
     
-    public void something();
-    public void setController(UserController uc);
+    public User promptForAddUsers();
+    public Long promptDeleteUser();
     
 }
