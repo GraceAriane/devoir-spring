@@ -30,7 +30,7 @@ public class UserServiceImpl implements Service {
      * @param user
      */
     public void addUser(User user) {
-        user.setId(nextId++);
+        // user.setId(nextId++);
         userRepository.save(user);
     }
 
